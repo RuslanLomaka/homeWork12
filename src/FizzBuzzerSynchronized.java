@@ -4,8 +4,9 @@ class FizzBuzzSynchronized {   //shared data
     StringBuilder sb = new StringBuilder();
     String appended ="";
     int waitTime = 1;
-    public FizzBuzzSynchronized(int maxNum) {
+    public FizzBuzzSynchronized(int maxNum, int waitTime) {
         this.maxNum = maxNum;
+        this.waitTime = waitTime;
     }
     private char nextIs = 'D';//The first Runnable who will get access to shared resource is D which calls the producer method
 
@@ -150,14 +151,10 @@ class D implements Runnable {
 }
 class FizBuzzTest {
     public static void main(String[] args) {
-        FizzBuzzSynchronized fbs = new FizzBuzzSynchronized(32);// Give a desired number to constructor
-        A a = new A(fbs);
-        B b = new B(fbs);
-        C c = new C(fbs);
-        D d = new D(fbs);
-        new Thread(a).start();
-        new Thread(b).start();
-        new Thread(c).start();
-        new Thread(d).start();
+        FizzBuzzSynchronized fbs = new FizzBuzzSynchronized(45,100);// Put a desired number, and wait() time in milliseconds to constructor
+        new Thread(new A(fbs)).start();
+        new Thread(new B(fbs)).start();
+        new Thread(new C(fbs)).start();
+        new Thread(new D(fbs)).start();
     }
 }
