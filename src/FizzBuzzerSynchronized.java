@@ -156,5 +156,10 @@ class FizBuzzTest {
         new Thread(new B(fbs)).start();
         new Thread(new C(fbs)).start();
         new Thread(new D(fbs)).start();
+//        FizzBuzzSynchronized fbs2 = new FizzBuzzSynchronized(55,150);// Put a desired number, and wait() time in milliseconds to constructor
+//        new Thread(new A(fbs2)).start();
+//        new Thread(new B(fbs2)).start();// Uncomment this section if you want to create 2 instances and 8 threads
+//        new Thread(new C(fbs2)).start();
+//        new Thread(new D(fbs2)).start();
     }
 }
